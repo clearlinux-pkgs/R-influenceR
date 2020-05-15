@@ -4,7 +4,7 @@
 #
 Name     : R-influenceR
 Version  : 0.1.0
-Release  : 7
+Release  : 8
 URL      : https://cran.r-project.org/src/contrib/influenceR_0.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/influenceR_0.1.0.tar.gz
 Summary  : Software Tools to Quantify Structural Importance of Nodes in a
@@ -14,11 +14,14 @@ Requires: R-influenceR-lib = %{version}-%{release}
 Requires: R-igraph
 BuildRequires : R-igraph
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-# influenceR
-influenceR: Software tools to quantify structural importance of nodes in a network. Algorithms include Betweenness Centrality, Bridging, Constraint Index, Effective Network Size, and Key Players. Currently, algorithms are implemented only for undirected graphs; work on directed graphs is in progress.
+Included are functions to compute betweenness centrality (by utilizing Madduri and Bader's
+    SNAP library), implementations of Burt's constraint and effective
+    network size (ENS) metrics, Borgatti's algorithm to identify key players, and Valente's
+    bridging metric. On Unix systems, the betweenness, Key Players, and
+    bridging implementations are parallelized with OpenMP, which may run
+    faster on systems which have OpenMP configured.
 
 %package lib
 Summary: lib components for the R-influenceR package.
@@ -30,21 +33,22 @@ lib components for the R-influenceR package.
 
 %prep
 %setup -q -c -n influenceR
+cd %{_builddir}/influenceR
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571847487
+export SOURCE_DATE_EPOCH=1589578494
 
 %install
-export SOURCE_DATE_EPOCH=1571847487
+export SOURCE_DATE_EPOCH=1589578494
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
