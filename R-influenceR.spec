@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-influenceR
-Version  : 0.1.0.2
-Release  : 30
-URL      : https://cran.r-project.org/src/contrib/influenceR_0.1.0.2.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/influenceR_0.1.0.2.tar.gz
+Version  : 0.1.5
+Release  : 31
+URL      : https://cran.r-project.org/src/contrib/influenceR_0.1.5.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/influenceR_0.1.5.tar.gz
 Summary  : Software Tools to Quantify Structural Importance of Nodes in a
 Group    : Development/Tools
 License  : GPL-2.0
@@ -21,11 +21,6 @@ BuildRequires : buildreq-R
 
 %description
 Included are functions to compute betweenness centrality (by utilizing Madduri and Bader's
-    SNAP library), implementations of Burt's constraint and effective
-    network size (ENS) metrics, Borgatti's algorithm to identify key players, and Valente's
-    bridging metric. On Unix systems, the betweenness, Key Players, and
-    bridging implementations are parallelized with OpenMP, which may run
-    faster on systems which have OpenMP configured.
 
 %package lib
 Summary: lib components for the R-influenceR package.
@@ -46,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683302995
+export SOURCE_DATE_EPOCH=1684428485
 
 %install
-export SOURCE_DATE_EPOCH=1683302995
+export SOURCE_DATE_EPOCH=1684428485
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -100,6 +95,7 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/influenceR/Meta/nsInfo.rds
 /usr/lib64/R/library/influenceR/Meta/package.rds
 /usr/lib64/R/library/influenceR/NAMESPACE
+/usr/lib64/R/library/influenceR/NEWS.md
 /usr/lib64/R/library/influenceR/R/influenceR
 /usr/lib64/R/library/influenceR/R/influenceR.rdb
 /usr/lib64/R/library/influenceR/R/influenceR.rdx
