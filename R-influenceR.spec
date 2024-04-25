@@ -5,7 +5,7 @@
 #
 Name     : R-influenceR
 Version  : 0.1.5
-Release  : 33
+Release  : 34
 URL      : https://cran.r-project.org/src/contrib/influenceR_0.1.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/influenceR_0.1.5.tar.gz
 Summary  : Software Tools to Quantify Structural Importance of Nodes in a
